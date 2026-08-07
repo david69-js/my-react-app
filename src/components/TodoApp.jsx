@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTodos } from '../hooks/useTodos'
 
+// Componente principal que renderiza la UI de la lista de tareas.
+// Usa el hook useTodos para obtener el estado y las acciones de las tareas.
 export function TodoApp() {
   const {
     todos,
@@ -15,23 +17,27 @@ export function TodoApp() {
   const [editingId, setEditingId] = useState(null)
   const [draft, setDraft] = useState('')
 
+  // Maneja el envío del formulario para agregar una tarea nueva.
   const handleSubmit = (event) => {
     event.preventDefault()
     addTodo(text)
     setText('')
   }
 
+  // Inicia la edición de una tarea estableciendo el id y el texto provisional.
   const startEdit = (todo) => {
     setEditingId(todo.id)
     setDraft(todo.text)
   }
 
+  // Guarda los cambios de edición de una tarea existente.
   const handleEditSubmit = (event) => {
     event.preventDefault()
     editTodo(editingId, draft)
     setEditingId(null)
   }
 
+  // Indica si existe al menos una tarea completada en la lista.
   const hasCompleted = todos.some((todo) => todo.completed)
 
   return (
