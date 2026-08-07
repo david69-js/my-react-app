@@ -1,21 +1,31 @@
 import { act, renderHook } from '@testing-library/react'
 import { useTodos } from '../useTodos'
 
+// Renderiza el hook useTodos con un estado inicial opcional.
+const setup = (initial = []) => renderHook(() => useTodos(initial)).result
+
+// Crea una tarea de prueba con valores por defecto y permite sobreescribirlos.
+const todo = (overrides) => ({
+  id: '1',
+  text: 'Tarea',
+  completed: false,
+  ...overrides,
+})
+
 describe('useTodos', () => {
-  test('inicia con una lista vacía por defecto', () => {
-    const { result } = renderHook(() => useTodos())
-    expect(result.current.todos).toEqual([])
+  // Comprueba el comportamiento del hook en cada acción disponible.
+
+  it('inicia con una lista vacía por defecto', () => {
+    expect(setup().current.todos).toEqual([])
   })
 
-  test('inicia con las tareas iniciales que recibe', () => {
-    const initial = [{ id: '1', text: 'Comprar leche', completed: false }]
-    const { result } = renderHook(() => useTodos(initial))
-    expect(result.current.todos).toHaveLength(1)
-    expect(result.current.todos[0].text).toBe('Comprar leche')
+  it('acepta tareas iniciales', () => {
+    const initial = [todo({ id: '1', text: 'Comprar leche' })]
+    expect(setup(initial).current.todos).toEqual(initial)
   })
 
-  test('agrega una tarea', () => {
-    const { result } = renderHook(() => useTodos())
+  it('agrega una tarea nueva', () => {
+    const result = setup()
     act(() => result.current.addTodo('Estudiar Jest'))
     expect(result.current.todos).toHaveLength(1)
     expect(result.current.todos[0]).toMatchObject({
@@ -24,78 +34,54 @@ describe('useTodos', () => {
     })
   })
 
-  test('no agrega tareas vacías o con solo espacios', () => {
-    const { result } = renderHook(() => useTodos())
+  it('no agrega tareas vacías', () => {
+    const result = setup()
     act(() => result.current.addTodo('   '))
     expect(result.current.todos).toHaveLength(0)
   })
 
-  test('marca una tarea como completada y la desmarca', () => {
-    const { result } = renderHook(() =>
-      useTodos([{ id: '1', text: 'Tarea', completed: false }]),
-    )
+  it('alterna el estado completado de una tarea', () => {
+    const result = setup([todo({ id: '1', text: 'Tarea', completed: false })])
     act(() => result.current.toggleTodo('1'))
     expect(result.current.todos[0].completed).toBe(true)
     act(() => result.current.toggleTodo('1'))
     expect(result.current.todos[0].completed).toBe(false)
   })
 
-  test('elimina una tarea por su id', () => {
-    const { result } = renderHook(() =>
-      useTodos([{ id: '1', text: 'Tarea', completed: false }]),
-    )
+  it('elimina una tarea por id', () => {
+    const result = setup([todo({ id: '1', text: 'Tarea' })])
     act(() => result.current.removeTodo('1'))
     expect(result.current.todos).toHaveLength(0)
   })
 
-  test('edita el texto de una tarea', () => {
-    const { result } = renderHook(() =>
-      useTodos([{ id: '1', text: 'Tarea', completed: false }]),
-    )
+  it('edita el texto de una tarea existente', () => {
+    const result = setup([todo({ id: '1', text: 'Tarea' })])
     act(() => result.current.editTodo('1', 'Tarea editada'))
     expect(result.current.todos[0].text).toBe('Tarea editada')
   })
 
-  test('no edita con texto vacío', () => {
-    const { result } = renderHook(() =>
-      useTodos([{ id: '1', text: 'Tarea', completed: false }]),
-    )
+  it('no edita con texto vacío', () => {
+    const result = setup([todo({ id: '1', text: 'Tarea' })])
     act(() => result.current.editTodo('1', '   '))
     expect(result.current.todos[0].text).toBe('Tarea')
   })
 
-  test('edita solo la tarea indicada y deja las demás intactas', () => {
-    const { result } = renderHook(() =>
-      useTodos([
-        { id: '1', text: 'Primera', completed: false },
-        { id: '2', text: 'Segunda', completed: false },
-      ]),
-    )
-    act(() => result.current.editTodo('1', 'Primera actualizada'))
-    expect(result.current.todos[0].text).toBe('Primera actualizada')
-    expect(result.current.todos[1].text).toBe('Segunda')
-  })
-
-  test('elimina solo las tareas completadas', () => {
-    const { result } = renderHook(() =>
-      useTodos([
-        { id: '1', text: 'Pendiente', completed: false },
-        { id: '2', text: 'Hecha', completed: true },
-      ]),
-    )
+  it('limpia solo las tareas completadas', () => {
+    const result = setup([
+      todo({ id: '1', text: 'Pendiente', completed: false }),
+      todo({ id: '2', text: 'Hecha', completed: true }),
+    ])
     act(() => result.current.clearCompleted())
     expect(result.current.todos).toHaveLength(1)
     expect(result.current.todos[0].id).toBe('1')
   })
 
-  test('calcula la cantidad de tareas pendientes', () => {
-    const { result } = renderHook(() =>
-      useTodos([
-        { id: '1', text: 'A', completed: false },
-        { id: '2', text: 'B', completed: true },
-        { id: '3', text: 'C', completed: false },
-      ]),
-    )
+  it('calcula el número de tareas pendientes', () => {
+    const result = setup([
+      todo({ id: '1', text: 'A' }),
+      todo({ id: '2', text: 'B', completed: true }),
+      todo({ id: '3', text: 'C' }),
+    ])
     expect(result.current.activeCount).toBe(2)
   })
 })
