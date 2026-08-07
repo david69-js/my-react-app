@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1786125873064" clover="3.2.0">
-  <project timestamp="1786125873064" name="All files">
-    <metrics statements="47" coveredstatements="47" conditionals="19" coveredconditionals="19" methods="28" coveredmethods="28" elements="94" coveredelements="94" complexity="0" loc="47" ncloc="47" packages="2" files="2" classes="2"/>
+<coverage generated="1786145618614" clover="3.2.0">
+  <project timestamp="1786145618614" name="All files">
+    <metrics statements="47" coveredstatements="47" conditionals="19" coveredconditionals="18" methods="28" coveredmethods="28" elements="94" coveredelements="93" complexity="0" loc="47" ncloc="47" packages="2" files="2" classes="2"/>
     <package name="components">
       <metrics statements="23" coveredstatements="23" conditionals="10" coveredconditionals="10" methods="11" coveredmethods="11"/>
-      <file name="TodoApp.jsx" path="/home/davidtoj/Documents/GIT-PROJECTS/testing-react/my-react-app/src/components/TodoApp.jsx">
+      <file name="TodoApp.jsx" path="C:\Users\da390\OneDrive\Documentos\Git-Projects\my-react-app\src\components\TodoApp.jsx">
         <metrics statements="23" coveredstatements="23" conditionals="10" coveredconditionals="10" methods="11" coveredmethods="11"/>
-        <line num="13" count="94" type="stmt"/>
-        <line num="14" count="94" type="stmt"/>
         <line num="15" count="94" type="stmt"/>
         <line num="16" count="94" type="stmt"/>
+        <line num="17" count="94" type="stmt"/>
         <line num="18" count="94" type="stmt"/>
-        <line num="19" count="5" type="stmt"/>
-        <line num="20" count="5" type="stmt"/>
-        <line num="21" count="5" type="stmt"/>
-        <line num="24" count="94" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="29" count="94" type="stmt"/>
+        <line num="21" count="94" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="28" count="94" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="35" count="94" type="stmt"/>
-        <line num="37" count="94" type="stmt"/>
-        <line num="48" count="63" type="stmt"/>
-        <line num="62" count="35" type="stmt"/>
-        <line num="69" count="2" type="stmt"/>
-        <line num="77" count="16" type="stmt"/>
-        <line num="88" count="1" type="stmt"/>
-        <line num="95" count="1" type="stmt"/>
+        <line num="34" count="94" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="41" count="94" type="stmt"/>
+        <line num="43" count="94" type="stmt"/>
+        <line num="54" count="63" type="stmt"/>
+        <line num="68" count="35" type="stmt"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="83" count="16" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="24" coveredstatements="24" conditionals="9" coveredconditionals="9" methods="17" coveredmethods="17"/>
-      <file name="useTodos.js" path="/home/davidtoj/Documents/GIT-PROJECTS/testing-react/my-react-app/src/hooks/useTodos.js">
-        <metrics statements="24" coveredstatements="24" conditionals="9" coveredconditionals="9" methods="17" coveredmethods="17"/>
+      <metrics statements="24" coveredstatements="24" conditionals="9" coveredconditionals="8" methods="17" coveredmethods="17"/>
+      <file name="useTodos.js" path="C:\Users\da390\OneDrive\Documentos\Git-Projects\my-react-app\src\hooks\useTodos.js">
+        <metrics statements="24" coveredstatements="24" conditionals="9" coveredconditionals="8" methods="17" coveredmethods="17"/>
         <line num="3" count="2" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
         <line num="7" count="6" type="stmt"/>
-        <line num="11" count="112" type="stmt"/>
-        <line num="13" count="112" type="stmt"/>
-        <line num="14" count="7" type="stmt"/>
-        <line num="15" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="6" type="stmt"/>
-        <line num="17" count="6" type="stmt"/>
-        <line num="20" count="112" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="23" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="28" count="112" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="32" count="112" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
-        <line num="34" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="35" count="3" type="stmt"/>
-        <line num="36" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="40" count="112" type="stmt"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="44" count="112" type="stmt"/>
-        <line num="46" count="112" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="13" count="110" type="stmt"/>
+        <line num="16" count="110" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="18" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="24" count="110" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="110" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="38" count="110" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="110" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
+        <line num="52" count="110" type="stmt"/>
+        <line num="54" count="110" type="stmt"/>
       </file>
     </package>
   </project>
