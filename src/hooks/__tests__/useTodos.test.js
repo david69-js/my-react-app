@@ -45,7 +45,7 @@ describe('useTodos', () => {
   // Verifica que no se agreguen tareas si el texto está vacío o solo tiene espacios.
   it('no agrega tareas vacías', () => {
     const result = setup()
-    act(() => result.current.addTodo('   '))
+    act(() => result.current.addTodo('  '))
     expect(result.current.todos).toHaveLength(0)
   })
 
@@ -55,6 +55,11 @@ describe('useTodos', () => {
     act(() => result.current.removeTodo('1'))
     expect(result.current.todos).toHaveLength(0)
   })
+
+  // [
+  //   {id: '1', text: 'Tarea 1'},
+  //   {id: '2', text: 'Tarea 2'}
+  // ]
 
   // Verifica que editar una tarea cambie su texto.
   it('edita el texto de una tarea existente', () => {

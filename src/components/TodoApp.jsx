@@ -35,7 +35,7 @@ export function TodoApp() {
           placeholder="¿Qué necesitas hacer?"
           aria-label="Nueva tarea"
         />
-        <button type="submit" disabled={!text.trim()}>
+        <button type="submit" >
           Agregar
         </button>
       </form>
