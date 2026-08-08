@@ -29,6 +29,19 @@ const removeTodo = (id) => {
 }
 ```
 
+¿Por qué falla?
+
+Porque la prueba espera que al eliminar una tarea se borre la que coincide con su `id`. En este ejemplo, la función está haciendo lo contrario: en lugar de borrar la tarea correcta, deja la que debería eliminarse.
+
+¿Qué significa `prev`?
+
+`prev` es el estado anterior de la lista de tareas. Cuando haces `setTodos((prev) => ...)`, estás recibiendo el valor actual de `todos` y puedes devolver una nueva lista basada en ese valor.
+
+En otras palabras:
+
+- `prev` = lo que había antes en la lista
+- `setTodos(...)` = reemplazar esa lista por una nueva versión
+
 Luego ejecuta:
 
 ```bash
@@ -48,6 +61,10 @@ const editTodo = (id, newText) => {
   setTodos((prev) => prev.map((todo) => todo))
 }
 ```
+
+¿Por qué falla?
+
+Porque la prueba espera que la tarea cambie de texto. En este ejemplo, el código devuelve las tareas sin modificar ninguna, así que el texto sigue igual.
 
 Ejecuta otra vez:
 
