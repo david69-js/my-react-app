@@ -14,7 +14,12 @@ export function useTodos(initialTodos = []) {
     const trimmed = text.trim()
     if (!trimmed) return
     const newTodo = { id: createId(), text: trimmed }
-    setTodos((prev) => [...prev, newTodo])
+
+    setTodos((prev) => {
+      const exists = prev.some((todo) => todo.id === newTodo.id)
+      if (exists) return prev
+      return [...prev, newTodo]
+    })
   }
 
   const removeTodo = (id) => {
