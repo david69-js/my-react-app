@@ -1,46 +1,61 @@
 # Todo App con Jest y React Testing Library
 
-## App Todo
+Aplicación simple de tareas con pruebas para:
 
-- Crear tareas.
-- Editar tareas.
-- Eliminar tareas.
+- crear tareas
+- editar tareas
+- eliminar tareas
 
-## Tests
+## Qué contiene
 
-- `useTodos.test.js`: verifica la lógica de crear, editar y eliminar.
-- `TodoApp.test.jsx`: verifica el flujo de usuario en la UI.
+- `src/components/TodoApp.jsx`: interfaz de usuario y manejo de formularios.
+- `src/hooks/useTodos.js`: lógica de tareas y estado.
+- `src/components/__tests__/TodoApp.test.jsx`: pruebas del flujo de usuario.
+- `src/hooks/__tests__/useTodos.test.js`: pruebas de la lógica del hook.
 
 ## Comandos
 
+- `npm install`: instala dependencias.
 - `npm test`: corre todos los tests.
-- `npm run test:coverage`: genera coverage.
+- `npm run test:coverage`: genera el reporte de cobertura.
 
 ## Coverage
 
-Muestra qué líneas del código se ejecutaron durante las pruebas.
+La cobertura muestra qué líneas de código fueron ejecutadas durante los tests.
 
-Generar coverage:
+Para generar el reporte:
 
 ```bash
 npm run test:coverage
 ```
 
-## Cuando un test falla
+Después de ejecutar el comando, abre el resultado en:
 
-Un test falla si el código no hace lo que espera la prueba.
+```bash
+coverage/lcov-report/index.html
+```
 
-Ejemplos:
+## Qué comprueban los tests
 
-- la tarea creada no aparece.
-- editar no cambia el texto.
-- eliminar no quita la tarea correcta.
+- `useTodos.test.js`: crear tarea, editar tarea, eliminar tarea, rechazar texto vacío.
+- `TodoApp.test.jsx`: agregar tarea en la UI, editarla y eliminarla.
 
-## Cuando un test pasa
+## Cómo reconocer fallos
 
-- crear tareas válidas.
-- editar la tarea correcta.
-- eliminar la tarea correcta.
+Un test falla cuando el comportamiento real no coincide con lo que espera la prueba.
+
+Casos típicos:
+
+- la tarea creada no aparece en pantalla.
+- editar no cambia el texto mostrado.
+- eliminar no borra la tarea correcta.
+
+## Qué debe hacer el código para pasar
+
+- crear solo tareas con texto válido.
+- editar la tarea indicada.
+- eliminar la tarea indicada.
+- mantener los botones y labels que usan las pruebas.
 
 Ejecuta:
 
