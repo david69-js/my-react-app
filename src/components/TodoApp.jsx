@@ -1,52 +1,32 @@
 import { useState } from 'react'
 import { useTodos } from '../hooks/useTodos'
 
-// Componente principal que renderiza la UI de la lista de tareas.
-// Usa el hook useTodos para obtener el estado y las acciones de las tareas.
 export function TodoApp() {
-  const {
-    todos,
-    addTodo,
-    toggleTodo,
-    removeTodo,
-    editTodo,
-    clearCompleted,
-    activeCount,
-  } = useTodos()
+  const { todos, addTodo, removeTodo, editTodo } = useTodos()
   const [text, setText] = useState('')
   const [editingId, setEditingId] = useState(null)
   const [draft, setDraft] = useState('')
 
-  // Maneja el envío del formulario para agregar una tarea nueva.
   const handleSubmit = (event) => {
     event.preventDefault()
     addTodo(text)
     setText('')
   }
 
-  // Inicia la edición de una tarea estableciendo el id y el texto provisional.
   const startEdit = (todo) => {
     setEditingId(todo.id)
     setDraft(todo.text)
   }
 
-  // Guarda los cambios de edición de una tarea existente.
   const handleEditSubmit = (event) => {
     event.preventDefault()
     editTodo(editingId, draft)
     setEditingId(null)
   }
 
-  // Indica si existe al menos una tarea completada en la lista.
-  const hasCompleted = todos.some((todo) => todo.completed)
-
   return (
     <main className="todo-app">
       <h1>Lista de Tareas</h1>
-      <p className="subtitle">
-        {activeCount} {activeCount === 1 ? 'tarea pendiente' : 'tareas pendientes'}
-      </p>
-
       <form className="todo-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -65,16 +45,7 @@ export function TodoApp() {
       ) : (
         <ul className="todo-list">
           {todos.map((todo) => (
-            <li
-              key={todo.id}
-              className={`todo-item${todo.completed ? ' completed' : ''}`}
-            >
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggleTodo(todo.id)}
-                aria-label={`Marcar ${todo.text} como completada`}
-              />
+            <li key={todo.id} className="todo-item">
               {editingId === todo.id ? (
                 <form className="edit-form" onSubmit={handleEditSubmit}>
                   <input
@@ -107,11 +78,6 @@ export function TodoApp() {
         </ul>
       )}
 
-      {hasCompleted && (
-        <button type="button" className="clear-completed" onClick={clearCompleted}>
-          Eliminar completadas
-        </button>
-      )}
     </main>
   )
 }
